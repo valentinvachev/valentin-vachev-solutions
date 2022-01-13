@@ -15,10 +15,10 @@ public class FindPeaks {
                 .mapToLong(Long::parseLong)
                 .toArray();
 
-        findPeaks(numbersArray);
+        System.out.println(findPeaks(numbersArray));
     }
 
-    public static void findPeaks(long[] inputArray) {
+    public static String findPeaks(long[] inputArray) {
         Map<Integer, Long> indexNumberPair = new LinkedHashMap<>();
 
         if (inputArray.length == 1) {
@@ -42,11 +42,9 @@ public class FindPeaks {
             }
         }
 
-        String result = indexNumberPair.entrySet()
+        return indexNumberPair.entrySet()
                 .stream()
                 .map(e -> String.format("%d, %d", e.getKey(), e.getValue()))
                 .collect(Collectors.joining("; "));
-
-        System.out.println(result);
     }
 }
